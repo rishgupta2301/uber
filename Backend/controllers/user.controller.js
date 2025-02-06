@@ -13,7 +13,7 @@ module.exports.registerUser = async( req, res, next) => {
     const { fullname, email, password} = req.body;
     const checkUser = await userModel.findOne({email});
     if(checkUser){
-        res.status(401).json({message: "Email already exists"})
+        return res.status(401).json({message: "Email already exists"})
     }
     const hashedPassword = await userModel.hashPassword(password);
 
@@ -27,7 +27,7 @@ module.exports.registerUser = async( req, res, next) => {
 
     const token = user.generateAuthToken();
 
-    res.status(201).json({token, user});
+    return res.status(201).json({token, user});
 }
 
 module.exports.loginUser = async( req, res, next) => {
@@ -42,13 +42,13 @@ module.exports.loginUser = async( req, res, next) => {
     const user = await userModel.findOne({email}).select("+password");
 
     if(!user){
-        res.status(401).json({message: "Invalid email or password"})
+        return res.status(401).json({message: "Invalid email or password"})
     }
 
     const isMatch = await user.comparePassword(password);
 
     if(!isMatch){
-        res.status(401).json({message: "Invalid email or password"})
+        return res.status(401).json({message: "Invalid email or password"})
     }
 
     const token = user.generateAuthToken();
@@ -57,11 +57,11 @@ module.exports.loginUser = async( req, res, next) => {
     const cookie = res.cookie('token', token);
 
 
-    res.status(200).json({token, user});
+    return res.status(200).json({token, user});
 }
 
 module.exports.getUserProfile = async (req, res, next) => {
-    res.status(200).json(req.user)
+    return res.status(200).json(req.user)
 }
 
 module.exports.logoutUser = async( req, res, next) => {
@@ -70,6 +70,6 @@ module.exports.logoutUser = async( req, res, next) => {
 
     await blacklistTokenModel.create({token});
 
-    res.status(200).json({message: 'Logged out'});
+    return res.status(200).json({message: 'Logged out'});
 
 }
