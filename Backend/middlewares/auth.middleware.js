@@ -3,9 +3,15 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 module.exports.authUser = async(req, res, next) => {
-    const token = req.cookies.token || req.headers.authorization.split(' ')[1]; // these are the 2 places where we can find the token  if the user is logged in
+    const token = req.cookies.token || req.headers.authorization?.split(' ')[1]; // these are the 2 places where we can find the token  if the user is logged in
     if(!token){
         res.status(401).json({message: 'Unauthorized'})
+    }
+
+    // checking if the token is present in the blackListed tokens, if it is then we will show unauthorized
+    const isBlacklisted = await userModel.findOne({token: token});
+    if(isBlacklisted){
+        res.status(401).json({message:"Unauthorized"});
     }
 
     try {
