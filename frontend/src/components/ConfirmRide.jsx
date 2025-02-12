@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 const ConfirmRide = (props) => {
 
-    const {setConfirmRidePanel} = props;
+    const {setConfirmRidePanel, setVehicleFound} = props;
 
   return (
     <div>
       <h5 className='p-1 text-center w-[93%] absolute top-0'>
         <i
+        // for closing the confirm ride panel and select the type of ride
           onClick={() => {
             setConfirmRidePanel(false);
           }}
@@ -48,7 +49,13 @@ const ConfirmRide = (props) => {
           </div>
         </div>
       </div>
-      <button className='w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg'>Confirm</button>
+      <button 
+      // for confirming the type of ride and going to the next page where we will be looking for the driver
+       onClick={() => {
+        setConfirmRidePanel(false); // as this will close this panel and go on the next page that is looking for the driver
+        setVehicleFound(true);
+      }}
+      className='w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg'>Confirm</button>
     </div>
   );
 };
