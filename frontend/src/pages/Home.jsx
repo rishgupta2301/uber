@@ -80,7 +80,21 @@ const Home = () => {
             transform: 'translateY(100%)'
         })
     }
-}, [ vehicleFound ])
+}, [vehicleFound])
+
+useGSAP(function () {
+    if (waitingForDriver) {
+        gsap.to(waitingForDriverRef.current, {
+            transform: 'translateY(0)'
+        })
+    } else {
+        gsap.to(waitingForDriverRef.current, {
+            transform: 'translateY(100%)'
+        })
+    }
+}, [waitingForDriver])
+
+
 
   return (
     <div className="h-screen relative overflow-hidden">
@@ -138,10 +152,10 @@ const Home = () => {
           <ConfirmRide setConfirmRidePanel={setConfirmRidePanel} setVehicleFound={setVehicleFound}  />
       </div>
       <div ref={vehicleFoundRef} className='fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-6 pt-12'>
-          <LookingForDriver pickup={pickup} destination={destination} setVehicleFound={setVehicleFound} />
+          <LookingForDriver setVehicleFound={setVehicleFound} setWaitingForDriver={setWaitingForDriver}/>
       </div>
-      <div ref={waitingForDriverRef} className="fixed w-full z-10 bottom-0 px-3 py-6 pt-12 translate-y-full bg-white">
-          <WaitingForDriver setWaitingForDriver={setWaitingForDriver} />
+      <div ref={waitingForDriverRef} className="fixed w-full z-10 bottom-0 px-3 py-6 pt-12  bg-white">
+          <WaitingForDriver waitingForDriver={waitingForDriver} />
       </div>
     </div>
   );

@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 const LookingForDriver = (props) => {
 
-    const { setVehicleFound} = props;
+    const { setVehicleFound,setWaitingForDriver} = props;
 
     return (
         <div>
             <h5 className='p-1 text-center w-[93%] absolute top-0' onClick={() => {
                 setVehicleFound(false)
+                setWaitingForDriver(true)
             }}><i className="text-3xl text-gray-200 ri-arrow-down-wide-line"></i></h5>
             <h3 className='text-2xl font-semibold mb-5'>Looking for nearby Drivers</h3>
 
