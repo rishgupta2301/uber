@@ -121,13 +121,13 @@ useGSAP(function () {
             </h5>
           )}
           <h4 className="text-2xl font-semibold">Find a trip</h4>
-          <form onSubmit={(e) => submitHandler(e)}>
-            <div className="line absolute h-16 w-1 top-[45%] left-10 bg-gray-900 rounded-full "></div>
+          <form className="relative py-3" onSubmit={(e) => submitHandler(e)}>
+            <div className="line absolute h-16 w-1 top-[50%] -translate-y-1/2 left-5 bg-gray-700 rounded-full "></div>
             <input
               onClick={() => setPanelOpen(true)}
               value={pickup}
               onChange={(e) => setPickup(e.target.value)}
-              className="bg-[#eee] px-12 py-2 text-base rounded-lg w-full mt-5"
+              className="bg-[#eee] px-12 py-2 text-base rounded-lg w-full"
               type="text"
               placeholder="Add a pick-up loaction"
             />

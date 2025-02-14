@@ -10,7 +10,7 @@ const ConfirmRide = (props) => {
         // for closing the confirm ride panel and select the type of ride
           onClick={() => {
             setConfirmRidePanel(false);
-            setVehiclePanel(false);
+            setVehicleFound(false);
           }}
           className="ri-arrow-down-wide-line text-3xl text-gray-400"
         ></i>
