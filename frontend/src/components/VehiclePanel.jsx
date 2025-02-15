@@ -2,11 +2,11 @@
 
 const VehiclePanel = (props) => {
 
-    const{setVehiclePanelOpen, setConfirmRidePanel} = props;
+    const{setVehiclePanel, setConfirmRidePanel} = props;
 
   return (
     <div>
-        <h5 className="p-1 text-center absolute top-0  w-full"><i onClick={() => {setVehiclePanelOpen(false)}} className="ri-arrow-down-wide-line text-3xl text-gray-400"></i></h5>
+        <h5 className="p-1 text-center absolute top-0  w-full"><i onClick={() => {setVehiclePanel(false)}} className="ri-arrow-down-wide-line text-3xl text-gray-400"></i></h5>
         <h3 className="text-2xl font-semibold mb-5">Choose a vehicle</h3>
         <div onClick={() => setConfirmRidePanel(true)} className="flex w-full active:border-black mb-3 p-3 border-2 rounded-xl items-center justify-between">
           <img
