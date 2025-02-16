@@ -160,7 +160,7 @@ const Home = () => {
       }
     );
 
-    console.log(response.data);
+    // console.log(response.data);
     setFare(response.data);
   }
 
@@ -275,12 +275,12 @@ const Home = () => {
         className="fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-6 pt-12"
       >
         <LookingForDriver
-                    createRide={createRide}
-                    pickup={pickup}
-                    destination={destination}
-                    fare={fare}
-                    vehicleType={vehicleType}
-                    setVehicleFound={setVehicleFound} />
+                        createRide={createRide}
+                        pickup={pickup}
+                        destination={destination}
+                        fare={fare}
+                        vehicleType={vehicleType}
+                        setVehicleFound={setVehicleFound} />
       </div>
       <div
         ref={waitingForDriverRef}
