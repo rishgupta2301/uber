@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CaptainDataContext } from '../context/CaptainContext'
@@ -91,7 +92,7 @@ const CaptainSignup = () => {
             />
           </div>
 
-          <h3 className='text-lg font-medium mb-2'>What&apos;s our Captain&apos;s name</h3>
+          <h3 className='text-lg font-medium mb-2'>What&apos;s our Captain&apos;s name?</h3>
           <input
             required
             value={email}

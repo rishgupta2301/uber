@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import axios from "axios";
@@ -9,6 +9,8 @@ import VehiclePanel from "../components/VehiclePanel";
 import ConfirmRide from "../components/ConfirmRide";
 import WaitingForDriver from "../components/WaitingForDriver";
 import LookingForDriver from "../components/LookingForDriver";
+import { UserDataContext } from '../context/UserContext';
+import { SocketContext } from '../context/SocketContext';
 
 const Home = () => {
   const [pickup, setPickup] = useState("");
@@ -28,6 +30,15 @@ const Home = () => {
   const confirmRidePanelRef = useRef(null);
   const waitingForDriverRef = useRef(null);
   const vehicleFoundRef = useRef(null);
+
+  const { socket } = useContext(SocketContext)
+  const { user } = useContext(UserDataContext)
+
+  useEffect(() => {
+    // console.log(user)
+      socket.emit("join", { userType: "user", userId: user._id })
+  }, [ user ])
+
 
   const handlePickupChange = async (e) => {
     setPickup(e.target.value);

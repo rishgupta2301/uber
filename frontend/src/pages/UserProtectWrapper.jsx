@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +23,7 @@ const UserProtectWrapper = ({ children }) => {
       }
     }).then((response) => {
       if(response.status === 200){
-        setUser(response.data.user);
+        setUser(response.data);
         setIsLoading(false)
       }
     }).catch(err => {
