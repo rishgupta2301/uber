@@ -1,16 +1,18 @@
-/* eslint-disable react/prop-types */
-import { useEffect, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {CaptainDataContext} from "../context/CaptainContext";
-import axios from "axios";
+import React, { useContext, useEffect, useState } from 'react'
+import { CaptainDataContext } from '../context/CaptainContext'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
-// as we have token for both users and captains so for protecting and making sure that we are at captains page that is why we are confirming it by getting it from the captains profile such that if it exists then setting the captain otherwise if we get any error then redirect it to the login page 
-const CaptainProtectWrapper = ({children}) => {
+const CaptainProtectWrapper = ({
+    children
+}) => {
 
-    const navigate = useNavigate();
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token')
+    const navigate = useNavigate()
     const { captain, setCaptain } = useContext(CaptainDataContext)
     const [ isLoading, setIsLoading ] = useState(true)
+
+
 
 
     useEffect(() => {
@@ -35,6 +37,8 @@ const CaptainProtectWrapper = ({children}) => {
             })
     }, [ token ])
 
+    
+
     if (isLoading) {
         return (
             <div>Loading...</div>
@@ -42,11 +46,12 @@ const CaptainProtectWrapper = ({children}) => {
     }
 
 
-  return (
-    <>
-        {children}
-    </>
-  )
+
+    return (
+        <>
+            {children}
+        </>
+    )
 }
 
 export default CaptainProtectWrapper

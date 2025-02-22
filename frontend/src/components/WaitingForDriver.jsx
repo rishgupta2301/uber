@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
+import React from 'react'
 
 const WaitingForDriver = (props) => {
-
-    const { waitingForDriver } = props;
-
+  console.log("waitingfordriver ", props.ride);
   return (
     <div>
       <h5 className='p-1 text-center w-[93%] absolute top-0' onClick={() => {
-        waitingForDriver(false)
+        props.waitingForDriver(false)
       }}><i className="text-3xl text-gray-200 ri-arrow-down-wide-line"></i></h5>
 
       <div className='flex items-center justify-between'>
@@ -16,7 +15,6 @@ const WaitingForDriver = (props) => {
           <h2 className='text-lg font-medium capitalize'>{props.ride?.captain.fullname.firstname}</h2>
           <h4 className='text-xl font-semibold -mt-1 -mb-1'>{props.ride?.captain.vehicle.plate}</h4>
           <p className='text-sm text-gray-600'>Maruti Suzuki Alto</p>
-
           <h1 className='text-lg font-semibold'>  {props.ride?.otp} </h1>
         </div>
       </div>

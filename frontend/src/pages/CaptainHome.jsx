@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CaptainDetails from '../components/CaptainDetails'
@@ -21,6 +22,7 @@ const CaptainHome = () => {
 
     const { socket } = useContext(SocketContext)
     const { captain } = useContext(CaptainDataContext)
+    console.log("captain ", captain);
 
     useEffect(() => {
         socket.emit('join', {
@@ -51,6 +53,7 @@ const CaptainHome = () => {
     socket.on('new-ride', (data) => {
 
         setRide(data)
+        console.log('new-ride ',ride);
         setRidePopupPanel(true)
 
     })

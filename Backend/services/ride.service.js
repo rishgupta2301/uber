@@ -70,14 +70,14 @@ module.exports.createRide = async ({
         pickup,
         destination,
         otp: getOtp(6),
-        fare: fare[ vehicleType ] // as getFare is returning us an object so for creating ride we are passing the fare for the particular vehicleType for creating ride
+        fare: fare[ vehicleType ]
     })
 
     return ride;
 }
 
 module.exports.confirmRide = async ({
-    rideId, captain
+    rideId, captainId
 }) => {
     if (!rideId) {
         throw new Error('Ride id is required');
@@ -87,7 +87,7 @@ module.exports.confirmRide = async ({
         _id: rideId
     }, {
         status: 'accepted',
-        captain: captain._id
+        captain: captainId
     })
 
     const ride = await rideModel.findOne({
