@@ -115,7 +115,7 @@ const CaptainHome = () => {
 
             </div>
             <div className='h-2/5 p-6'>
-                <CaptainDetails />
+                <CaptainDetails captain={captain} />
             </div>
             <div ref={ridePopupPanelRef} className='fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-10 pt-12'>
                 <RidePopUp

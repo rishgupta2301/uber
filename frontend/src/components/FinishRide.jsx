@@ -1,26 +1,34 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import React,{useContext} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { CaptainDataContext } from '../context/CaptainContext'
 
 
 const FinishRide = (props) => {
 
+    // const { ride} = props;
+    console.log({...props})
+
+    console.log("props-ride ",props.ride)
+    const {captain} = useContext(CaptainDataContext);
+
     const navigate = useNavigate()
 
     async function endRide() {
+        console.log("props-ride ",props.ride)
         const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/end-ride`, {
-
-            rideId: props.ride._id
-
+                
+            rideId: props.ride._id,
+            // captainId: captain._id
 
         }, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
-
+        console.log(response)
         if (response.status === 200) {
             navigate('/captain-home')
         }

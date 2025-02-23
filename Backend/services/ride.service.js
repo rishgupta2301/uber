@@ -139,9 +139,9 @@ module.exports.endRide = async ({ rideId, captain }) => {
 
     const ride = await rideModel.findOne({
         _id: rideId,
-        captain: captain._id
+        // captain: captain?._id
     }).populate('user').populate('captain').select('+otp');
-
+    console.log("ridefindingfromservice ", ride)
     if (!ride) {
         throw new Error('Ride not found');
     }

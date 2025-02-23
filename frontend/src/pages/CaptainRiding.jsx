@@ -11,8 +11,9 @@ const CaptainRiding = () => {
     const finishRidePanelRef = useRef(null)
     const location = useLocation()
     const rideData = location.state?.ride
+    
 
-
+console.log("rideData ",rideData._id)
 
     useGSAP(function () {
         if (finishRidePanel) {

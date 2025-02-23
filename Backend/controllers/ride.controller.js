@@ -116,9 +116,11 @@ module.exports.endRide = async (req, res) => {
     }
 
     const { rideId } = req.body;
+    console.log(rideId);
 
     try {
         const ride = await rideService.endRide({ rideId, captain: req.captain });
+        console.log("-from-controller ", ride);
 
         sendMessageToSocketId(ride.user.socketId, {
             event: 'ride-ended',
@@ -129,6 +131,7 @@ module.exports.endRide = async (req, res) => {
 
         return res.status(200).json(ride);
     } catch (err) {
+        console.log(err);
         return res.status(500).json({ message: err.message });
     } s
 }
