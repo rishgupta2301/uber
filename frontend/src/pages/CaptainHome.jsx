@@ -21,7 +21,8 @@ const CaptainHome = () => {
     const [ ride, setRide ] = useState(null)
 
     const { socket } = useContext(SocketContext)
-    const { captain } = useContext(CaptainDataContext)
+    // const { captain } = useContext(CaptainDataContext)
+    const captain = JSON.parse(localStorage.getItem('captain'));
     console.log("captain ", captain);
 
     useEffect(() => {

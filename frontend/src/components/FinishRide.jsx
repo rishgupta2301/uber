@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
-import React,{useContext} from 'react'
+import React,{ useContext } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { CaptainDataContext } from '../context/CaptainContext'
+import { SocketContext } from '../context/SocketContext'
 
 
 const FinishRide = (props) => {
@@ -12,12 +13,14 @@ const FinishRide = (props) => {
     console.log({...props})
 
     console.log("props-ride ",props.ride)
-    const {captain} = useContext(CaptainDataContext);
+    const {captain, setCaptain} = useContext(CaptainDataContext);
 
     const navigate = useNavigate()
+    const { socket } = useContext(SocketContext)
 
     async function endRide() {
-        console.log("props-ride ",props.ride)
+        try {
+            console.log("props-ride ",props.ride)
         const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/end-ride`, {
                 
             rideId: props.ride._id,
@@ -28,10 +31,25 @@ const FinishRide = (props) => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
+        setCaptain(response.data.captain)
+        // localStorage.setItem('captain', captain);
+    
+        console.log("captain---- ", captain);
         console.log(response)
-        if (response.status === 200) {
+        if (response.statusText === "OK") {
             navigate('/captain-home')
         }
+        const { ride } = location.state || {} // Retrieve ride data
+ 
+        // if(response.status === 200){
+        //     socket.on("ride-ended", () => {
+        //         navigate('/captain-home')
+        //     })
+        // }
+        } catch (error) {
+            console.log(error);
+        }
+        
 
     }
 

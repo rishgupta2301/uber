@@ -3,7 +3,8 @@ import { CaptainDataContext } from "../context/CaptainContext"
 
 const CaptainDetails = () => {
 
-    const { captain } = useContext(CaptainDataContext);
+    // const { captain, setCaptain } = useContext(CaptainDataContext);
+    const captain = (JSON.parse(localStorage.getItem('captain')));
     console.log(captain)
 
   return (
