@@ -55,7 +55,7 @@ console.log("rideData ",rideData._id)
                     setFinishRidePanel={setFinishRidePanel} />
             </div>
 
-            <div className='h-screen fixed w-screen top-0 z-[-1]'>
+            <div className='h-screen fixed w-[100%] top-0 z-[-1]'>
                 <LiveTracking />
             </div>
 
