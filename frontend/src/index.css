@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Default styles for #root (mobile-first, full width) */
+#root {
+  @apply text-center overflow-hidden w-screen box-border;
+}
+
+/* Apply mobile-like dimensions only on laptop or larger screens (min-width: 768px) */
+@media (min-width: 768px) {
+  #root {
+    /* Fixed width and height for mobile screen */
+    width: 450px;
+    height: 887px;
+    /* Center the container on larger screens */
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+    /* Lock dimensions strictly */
+    max-width: 450px;
+    min-width: 450px;
+    max-height: 887px;
+    min-height: 887px;
+    /* Optional: Add a subtle shadow to mimic a device frame */
+    @apply shadow-lg;
+  }
+}
+
+/* Ensure the body supports centering and full viewport height */
+/* body {
+  @apply m-0 p-0 min-h-screen flex justify-center items-center overflow-auto;
+} */
