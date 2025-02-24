@@ -11,12 +11,6 @@ const LocationSearchPanel = (props) => {
     activeField,
   } = props;
 
-  // const locations = [
-  //   "24B, near Khan Academy, Khan Market, New Delhi",
-  //   "24B, near Khan Academy, Khan Market, New Delhi",
-  //   "24B, near Khan Academy, Khan Market, New Delhi",
-  //   "24B, near Khan Academy, Khan Market, New Delhi",
-  // ];
 
   const handleSuggestionClick = (suggestion) => {
     if (activeField === "pickup") {
@@ -24,8 +18,6 @@ const LocationSearchPanel = (props) => {
     } else if (activeField === "destination") {
       setDestination(suggestion);
     }
-    // setVehiclePanel(true)
-    // setPanelOpen(false)
   };
 
   return (

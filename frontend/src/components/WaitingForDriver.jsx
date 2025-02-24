@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 
 const WaitingForDriver = (props) => {
-  console.log("waitingfordriver ", props.ride);
   return (
     <div>
       <h5 className='p-1 text-center w-[93%] absolute top-0' onClick={() => {
